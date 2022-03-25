@@ -7,7 +7,6 @@ const AllInvoices = () => {
     sendRequest,
     status,
     data: loadedInvoices,
-    error,
   } = useHttp(getInvoices, true);
 
   useEffect(() => {
