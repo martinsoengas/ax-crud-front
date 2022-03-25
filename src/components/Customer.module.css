@@ -1,0 +1,21 @@
+button {
+  width: 100%;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit {
+  background-color: rgb(255, 174, 0);
+}
+
+.save {
+  background-color: green;
+}
+
+.delete {
+  background-color: red;
+}
