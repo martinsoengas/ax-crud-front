@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useHttp from "../hooks/useHttp";
 import { getInvoices } from "../api/api";
+import Card from "../UI/Card";
 
 const AllInvoices = () => {
   const {
@@ -22,22 +23,24 @@ const AllInvoices = () => {
   }
 
   return (
-    <table>
-      <tbody>
-        <tr>
-          <th>Cliente Facturado</th>
-          <th>Numero de Factura</th>
-          <th>Importe</th>
-        </tr>
-        {loadedInvoices.map((invoice) => (
-          <tr key={invoice.id}>
-            <td>{invoice.customerName}</td>
-            <td>{invoice.invoiceNum}</td>
-            <td>{invoice.invoiceTotal}</td>
+    <Card>
+      <table>
+        <tbody>
+          <tr>
+            <th>Cliente Facturado</th>
+            <th>Numero de Factura</th>
+            <th>Importe</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+          {loadedInvoices.map((invoice) => (
+            <tr key={invoice.id}>
+              <td>{invoice.customerName}</td>
+              <td>{invoice.invoiceNum}</td>
+              <td>{invoice.invoiceTotal}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Card>
   );
 };
 

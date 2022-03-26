@@ -50,7 +50,7 @@ export const updateCustomer = async (updatedCustomer) => {
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Could not create customer");
+    throw new Error(data.message || "Could not update customer");
   }
 
   return null;

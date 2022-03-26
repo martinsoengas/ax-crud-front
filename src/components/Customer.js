@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useCallback } from "react";
+import { Fragment, useState, useEffect } from "react";
 import useHttp from "../hooks/useHttp";
 import { updateCustomer } from "../api/api";
 import classes from "./Customer.module.css";
@@ -63,15 +63,34 @@ const Client = (props) => {
     setIsEditing(false);
   };
 
+  const deleteButton = (
+    <td>
+      <button className={classes.delete} onClick={deleteButtonHandler}>
+        Borrar
+      </button>
+    </td>
+  );
+
+  const editOrSave = isEditing ? (
+    <td>
+      <button className={classes.save} onClick={saveEditHandler}>
+        Guardar
+      </button>
+    </td>
+  ) : (
+    <td>
+      <button className={classes.edit} onClick={editHandler}>
+        Editar
+      </button>
+    </td>
+  );
+
   const editable = (
     <tr>
       <td>
         <input
           defaultValue={customerName}
           onChange={onNameEditHandler}
-          type="text"
-          minLength="1"
-          maxLength="100"
           size="6"
         />
       </td>
@@ -104,16 +123,8 @@ const Client = (props) => {
           max="1"
         />
       </td>
-      <td>
-        <button className={classes.save} onClick={saveEditHandler}>
-          Guardar
-        </button>
-      </td>
-      <td>
-        <button className={classes.delete} onClick={deleteButtonHandler}>
-          Borrar
-        </button>
-      </td>
+      {editOrSave}
+      {deleteButton}
     </tr>
   );
 
@@ -123,16 +134,8 @@ const Client = (props) => {
       <td>{customerAddress}</td>
       <td>{customerDNI}</td>
       <td>{customerIVA === "1" ? "Resp. Inscripto" : "Consumidor Final"}</td>
-      <td>
-        <button className={classes.edit} onClick={editHandler}>
-          Editar
-        </button>
-      </td>
-      <td>
-        <button className={classes.delete} onClick={deleteButtonHandler}>
-          Borrar
-        </button>
-      </td>
+      {editOrSave}
+      {deleteButton}
     </tr>
   );
 
